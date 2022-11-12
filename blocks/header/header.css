@@ -1,0 +1,31 @@
+.header {
+  margin: 45px auto 0 auto;
+  max-width: 880px;
+}
+
+.header::after {
+  margin: 41px 0 40px 0;
+  content: '';
+  background-color: rgba(84, 84, 84, 1);
+  opacity: .7;
+  height: 1px;
+  display: block;
+}
+
+@media screen and (max-width: 1040px) {
+  .header {
+    padding: 0 100px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 0 60px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .header {
+    padding: 0 19px;
+  }
+}

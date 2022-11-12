@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Алена Елегечева">
+  <meta name="dicription" content="Сайт, где можно добавлять фотографии, удалять их и ставить лайки.">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Mesto</title>
+</head>
+
+<body class="root">
+  <header class="header">
+    <img class="logo" src="./images/logo.svg" alt="логотип">
+  </header>
+  <main class="page">
+    <section class="profile">
+      <img class="profile__avatar" src="./images/Avatar.jpg" alt="аватар">
+      <div class="profile__info">
+        <h1 class="profile__title">Жак-Ив Кусто</h1>
+        <p class="profile__subtitle">Исследователь океана</p>
+        <button class="link profile__edit-btn"></button>
+      </div>
+      <button class="link profile__add-btn"></button>
+    </section>
+    <section class="photo-grid">
+      <div class="element">
+        <img class="element__image" src="./images/baikal.png" alt="байкал">
+        <div class="element__image-description">
+          <h2 class="element__heading">Байкал</h2>
+          <button class="link element__like-btn"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/karelia.jpeg" alt="пещеры рускеала">
+        <div class="element__image-description">
+          <h2 class="element__heading">Пещеры Рускеала, Карелия</h2>
+          <button class="link element__like-btn"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/kamchatka.jpg" alt="вулкан ключесвкой">
+        <div class="element__image-description">
+          <h2 class="element__heading">Вулкан Ключевской, Камчатка</h2>
+          <button class="link element__like-btn"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/prirodniy park egorki krasn.jpeg" alt="красноярск">
+        <div class="element__image-description">
+          <h2 class="element__heading">Природный парк Егорки, Красноярск</h2>
+          <button class="link element__like-btn"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/vulcan-kamchatka.jpeg" alt="вулкан малый семячик">
+        <div class="element__image-description">
+          <h2 class="element__heading">Вулкан Малый Семячик, Камчатка</h2>
+          <button class="link element__like-btn"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/karelia_2.jpeg" alt="горный парк рускеала">
+        <div class="element__image-description">
+          <h2 class="element__heading">Горный парк Рускеала, Карелия</h2>
+          <button class="link element__like-btn"></button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+  </footer>
+  <div class="popup">
+    <form class="popup__container">
+      <h3 class="popup__heading">Редактировать профиль</h3>
+      <button class="link popup__close-icon"></button>
+      <input class="popup__field popup__field_name" type="text" name="username" id="username" value="Жак-Ив Кусто">
+      <input class="popup__field popup__field_aboutme" type="text" name="aboutme" id="aboutme"
+        value="Исследователь океана">
+      <button class="popup__btn" type="submit">Сохранить</button>
+    </form>
+  </div>
+  <script src="./scripts/index.js"></script>
+</body>
+
+</html>
