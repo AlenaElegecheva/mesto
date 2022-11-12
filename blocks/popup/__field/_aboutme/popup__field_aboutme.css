@@ -1,5 +1,3 @@
-@media screen and (max-width: 550px) {
-  .popup__field_aboutme {
-    margin-top: 30px;
-  }
-}
+ .popup__field_aboutme {
+   margin-top: 30px;
+ }

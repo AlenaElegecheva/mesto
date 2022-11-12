@@ -5,7 +5,7 @@
   height: 24px;
   margin: 0 0 0 18px;
   padding: 0;
-  align-self: end;
+  align-self: baseline;
   background-image: url(../../../images/edit.svg);
   background-repeat: no-repeat;
   background-position: center;
