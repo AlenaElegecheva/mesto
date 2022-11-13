@@ -1,37 +1,31 @@
 const popup = document.querySelector('.popup');
-const openPopupButton = document.querySelector('.profile__edit-btn');
-const closePopupButton = document.querySelector('.popup__close-icon');
+const PopupOpenButton = document.querySelector('.profile__edit-btn');
+const PopupCloseButton = document.querySelector('.popup__close-icon');
+const formElement = document.querySelector('.form-edit');
+const username = document.querySelector('.popup__field-name');
+const aboutme = document.querySelector('.popup__field-aboutme');
+const profileTitle = document.querySelector('.profile__title');
+const profileSubtitle = document.querySelector('.profile__subtitle');
 
-const openPopup = function () {
+const OpenPopup = function () {
   popup.classList.add('popup_opened');
+  username.value = profileTitle.textContent;
+  aboutme.value = profileSubtitle.textContent;
 }
-const closePopup = function () {
+
+const ClosePopup = function () {
   popup.classList.remove('popup_opened');
 }
 
-openPopupButton.addEventListener('click', openPopup);
-closePopupButton.addEventListener('click', closePopup);
-
-
-let formElement = document.querySelector('.popup__container');
-
 function formSubmitHandler(evt) {
   evt.preventDefault();
+  profileTitle.textContent = username.value;
+  profileSubtitle.textContent = aboutme.value;
 
-  let username = document.querySelector('.popup__field_name');
-  let aboutme = document.querySelector('.popup__field_aboutme');
-
-  username.value;
-  aboutme.value;
-
-  let profile__title = document.querySelector('.profile__title');
-  let profile__subtitle = document.querySelector('.profile__subtitle');
-
-  profile__title.textContent = username.value;
-  profile__subtitle.textContent = aboutme.value;
-
-  closePopup();
+  ClosePopup();
 }
 
+PopupOpenButton.addEventListener('click', OpenPopup);
+PopupCloseButton.addEventListener('click', ClosePopup);
 formElement.addEventListener('submit', formSubmitHandler);
 

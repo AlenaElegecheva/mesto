@@ -4,10 +4,9 @@
 }
 
 .header::after {
-  margin: 41px 0 40px 0;
+  margin: 35px 0 40px 0;
   content: '';
-  background-color: rgba(84, 84, 84, 1);
-  opacity: .7;
+  background-color: rgba(84, 84, 84, .7);
   height: 1px;
   display: block;
 }
@@ -26,6 +25,7 @@
 
 @media screen and (max-width: 450px) {
   .header {
-    padding: 0 19px;
+    padding: 0;
+    margin: 28px 0 0 0;
   }
 }

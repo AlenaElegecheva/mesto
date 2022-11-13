@@ -7,5 +7,11 @@
   height: 19px;
   margin: 0;
   align-self: center;
-  padding: 0 30px 0 22px;
+  padding: 0 22px 0 22px;
+  cursor: pointer;
 }
+
+.element__like-btn:hover {
+  opacity: .5;
+  transition: .5s;
+ }

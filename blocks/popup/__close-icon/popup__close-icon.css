@@ -1,9 +1,9 @@
 .popup__close-icon {
-  background-image: url(../../../images/Close\ Icon.svg);
+  background-image: url(../../../images/Close_Icon.svg);
   border: none;
   width: 32px;
   height: 32px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0);
   position: absolute;
   top: -40px;
   right: -40px;
@@ -11,7 +11,7 @@
 
 @media screen and (max-width: 550px) {
   .popup__close-icon {
-    background-image: url(../../../images/Close\ Icon\ min.svg);
+    background-image: url(../../../images/Close_Icon_min.svg);
     top: -36px;
     right: 0;
     width: 20px;
