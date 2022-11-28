@@ -26,7 +26,9 @@
       <button class="btn profile__add-btn" type="button" aria-label="добавить"></button>
     </section>
     <section class="photo-grid">
+      <!--
       <article class="element">
+        <button class="btn element__delete-btn" type="button" aria-label="удалить"></button>
         <img class="element__image" src="./images/baikal.png" alt="байкал">
         <div class="element__image-description">
           <h2 class="element__heading">Байкал</h2>
@@ -34,6 +36,7 @@
         </div>
       </article>
       <article class="element">
+        <button class="btn element__delete-btn" type="button" aria-label="удалить"></button>
         <img class="element__image" src="./images/karelia.jpeg" alt="пещеры рускеала">
         <div class="element__image-description">
           <h2 class="element__heading">Пещеры Рускеала, Карелия</h2>
@@ -41,6 +44,7 @@
         </div>
       </article>
       <article class="element">
+        <button class="btn element__delete-btn" type="button" aria-label="удалить"></button>
         <img class="element__image" src="./images/kamchatka.jpg" alt="вулкан ключесвкой">
         <div class="element__image-description">
           <h2 class="element__heading">Вулкан Ключевской, Камчатка</h2>
@@ -48,6 +52,7 @@
         </div>
       </article>
       <article class="element">
+        <button class="btn element__delete-btn" type="button" aria-label="удалить"></button>
         <img class="element__image" src="./images/prirodniy_park_egorki_krasn.jpeg" alt="красноярск">
         <div class="element__image-description">
           <h2 class="element__heading">Природный парк Егорки, Красноярск</h2>
@@ -55,6 +60,7 @@
         </div>
       </article>
       <article class="element">
+        <button class="btn element__delete-btn" type="button" aria-label="удалить"></button>
         <img class="element__image" src="./images/vulcan_kamchatka.jpeg" alt="вулкан малый семячик">
         <div class="element__image-description">
           <h2 class="element__heading">Вулкан Малый Семячик, Камчатка</h2>
@@ -62,28 +68,63 @@
         </div>
       </article>
       <article class="element">
+        <button class="btn element__delete-btn" type="button" aria-label="удалить"></button>
         <img class="element__image" src="./images/karelia_2.jpeg" alt="горный парк рускеала">
         <div class="element__image-description">
           <h2 class="element__heading">Горный парк Рускеала, Карелия</h2>
           <button class="element__like-btn" type="button" aria-label="нравится"></button>
         </div>
       </article>
+    -->
     </section>
   </main>
   <footer class="footer">
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
-  <div class="popup">
+  <!--Попап редактирования-->
+  <div class="popup popup_edit">
     <div class="popup__container">
+      <button class="btn popup__close-icon popup__close-icon_edit" type="button" aria-label="закрыть"></button>
+      <h3 class="popup__heading">Редактировать профиль</h3>
       <form class="form-edit" name="profile-edit">
-        <button class="btn popup__close-icon" type="button" aria-label="закрыть"></button>
-        <h3 class="popup__heading">Редактировать профиль</h3>
         <input class="popup__input popup__input_field_name" type="text" name="username" id="username">
         <input class="popup__input popup__input_field_aboutme" type="text" name="aboutme" id="aboutme">
         <button class="popup__btn" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
+   <!--Попап добавления карточки-->
+  <div class="popup popup_add">
+    <div class="popup__container">
+      <button class="btn popup__close-icon popup__close-icon_add" type="button" aria-label="закрыть"></button>
+      <h3 class="popup__heading">Новое место</h3>
+      <form class="form-add" name="profile-add">
+        <input class="popup__input popup__input_field_place" type="text" name="place" id="place" placeholder="Название">
+        <input class="popup__input popup__input_field_src" type="text" name="src" id="src" placeholder="Ссылка на картинку">
+        <button class="popup__btn" type="submit">Создать</button>
+      </form>
+    </div>
+  </div>
+   <!--Попап картинки-->
+  <div class="popup popup_image">
+    <div class="popup__container_image">
+      <button class="btn popup__close-icon popup__close-icon_image" type="button" aria-label="закрыть"></button>
+      <img class="popup__picture">
+      <h2 class="popup__image-title"></h2>
+    </div>
+  </div>
+
+  <template id="element-template">
+    <article class="element">
+      <button class="btn element__delete-btn" type="button" aria-label="удалить"></button>
+      <img class="element__image">
+      <div class="element__image-description">
+        <h2 class="element__heading"></h2>
+        <button class="element__like-btn" type="button" aria-label="нравится"></button>
+      </div>
+    </article>
+  </template>
+
   <script src="./scripts/index.js"></script>
 </body>
 

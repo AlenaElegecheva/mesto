@@ -4,6 +4,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  justify-self: stretch;
-  align-self: stretch;
+  overflow: hidden;
+  cursor: pointer;
 }
