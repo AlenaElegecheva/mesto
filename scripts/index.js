@@ -59,7 +59,7 @@ function closePopup(popup) { // закрытие попап
   popup.classList.remove('popup_opened');
 }
 
-function formSubmitHandler(evt) { // обработка формы редактирования профиля
+function handleFormEditSubmit(evt) { // обработка формы редактирования профиля
   evt.preventDefault();
   profileTitle.textContent = username.value;
   profileSubtitle.textContent = aboutme.value;
@@ -84,7 +84,7 @@ function addCard(item) {
   // Обработчики кликов для кнопок лайка и удаления, открытия попап с картинкой
   elementDeleteButton.addEventListener('click', handleDeleteButtonClick)
   elementLikeButton.addEventListener('click', handleLikeButtonClick)
-  elementImage.addEventListener('click', handleElementImageClick)
+  elementImage.addEventListener('click', () => handleElementImageClick(item))
 
   return photoGridElement;
 }
@@ -97,13 +97,11 @@ const handleDeleteButtonClick = (e) => {  // удаляем картинку
   e.target.closest('.element').remove()
 }
 
-const handleElementImageClick = (e) => {  // открытие попап с картинкой
-  e.preventDefault()
+const handleElementImageClick = (item) => {  // открытие попап с картинкой
+  popupPicture.src = item.link;
+  popupImageTitle.textContent = item.name;
+
   openPopup(popupImage);
-  const elementHeading = document.querySelector('.element__heading');
-  const elementImage = document.querySelector('.element__image');
-  popupPicture.src = elementImage.src;
-  popupImageTitle.textContent = elementHeading.textContent;
 }
 
 popupCloseImageButton.addEventListener('click', function () { // закрытие попап с картинкой
@@ -115,7 +113,7 @@ initialCards.forEach(function (item) { // загружаем карточки и
   photoGrid.append(card);
 });
 
-const handleFormSubmit = (e) => {
+const handleFormAddSubmit = (e) => { // добавляем картинки и описание в форму попап
   e.preventDefault()
   const photoGridElement = {
     name: popupPlace.value,
@@ -127,7 +125,7 @@ const handleFormSubmit = (e) => {
 
   closePopup(popupAdd);
 }
-formEditElement.addEventListener('submit', formSubmitHandler); // обработчик событий
+formEditElement.addEventListener('submit', handleFormEditSubmit); // обработчик событий
 
 popupOpenEditButton.addEventListener('click', function () { // открытие попап и редактирвание профиля
   openPopup(popupEdit);
@@ -149,4 +147,4 @@ popupCloseAddButton.addEventListener('click', function () { // закрытие 
   closePopup(popupAdd)
 });
 
-formAddElement.addEventListener('submit', handleFormSubmit)
+formAddElement.addEventListener('submit', handleFormAddSubmit)
