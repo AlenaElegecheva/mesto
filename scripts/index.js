@@ -24,32 +24,6 @@ const popupAdd = document.querySelector('.popup_add');
 const popupPlace = document.querySelector('.popup__input_field_place');
 const popupSrc = document.querySelector('.popup__input_field_src');
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 
 function openPopup(popup) { // открытие попап
   popup.classList.add('popup_opened');
@@ -100,6 +74,7 @@ const handleDeleteButtonClick = (e) => {  // удаляем картинку
 const handleElementImageClick = (item) => {  // открытие попап с картинкой
   popupPicture.src = item.link;
   popupImageTitle.textContent = item.name;
+  popupPicture.alt = item.name;
 
   openPopup(popupImage);
 }
