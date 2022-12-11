@@ -19,6 +19,7 @@ const popupImageTitle = document.querySelector('.popup__image-title');
 const photoGrid = document.querySelector('.photo-grid');
 const elementTemplate = document.querySelector('#element-template').content.querySelector('.element');
 const popupAdd = document.querySelector('.popup_add');
+const popupBtn = popupAdd.querySelector('.popup__btn');
 
 function resetErrorSpan() {
   const PopupErrorSpan = Array.from(document.querySelectorAll('.popup__error'));
@@ -130,6 +131,7 @@ const handleFormAddSubmit = (e) => { // добавляем картинки и �
   photoGrid.prepend(card);
 
   closePopup(popupAdd);
+  popupBtn.classList.add('popup__btn_disabled');
 }
 
 popupOpenEditButton.addEventListener('click', function () { // открытие попап и редактирвание профиля
