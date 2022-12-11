@@ -20,10 +20,17 @@ const photoGrid = document.querySelector('.photo-grid');
 const elementTemplate = document.querySelector('#element-template').content.querySelector('.element');
 const popupAdd = document.querySelector('.popup_add');
 
-function resetError() {
-  const error = Array.from(document.querySelectorAll('.popup__error'));
-  error.forEach((errorspan) => {
+function resetErrorSpan() {
+  const PopupErrorSpan = Array.from(document.querySelectorAll('.popup__error'));
+  PopupErrorSpan.forEach((errorspan) => {
     errorspan.textContent = '';
+  })
+}
+
+function resetErrorInput() {
+  const popupErrorInput = Array.from(document.querySelectorAll('.popup__input'));
+  popupErrorInput.forEach((errorinput) => {
+    errorinput.classList.remove('popup__input_type_error');
   })
 }
 
@@ -32,7 +39,8 @@ function openPopup(popup) { // открытие попап
   document.addEventListener('click', closePopupByButton);
   popup.addEventListener('click', closePopupByOverlay);
   document.addEventListener('keydown', closePopupByKey);
-  resetError();
+  resetErrorSpan();
+  resetErrorInput();
 }
 
 function closePopup(popup) { // закрытие попап
