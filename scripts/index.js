@@ -1,3 +1,4 @@
+const popups = document.querySelectorAll('.popup');
 const popupEdit = document.querySelector('.popup_edit');
 const popupOpenEditButton = document.querySelector('.profile__edit-btn');
 const profileTitle = document.querySelector('.profile__title');
@@ -36,29 +37,12 @@ function resetErrorInput() { // сброс ошибки в инпуте при �
 
 function openPopup(popup) { // открытие попап
   popup.classList.add('popup_opened');
-  document.addEventListener('mousedown', closePopupByMousedown);
   document.addEventListener('keydown', closePopupByKey);
 }
 
 function closePopup(popup) { // закрытие попап
   popup.classList.remove('popup_opened');
-  document.removeEventListener('mousedown', closePopupByMousedown);
   document.removeEventListener('keydown', closePopupByKey);
-}
-
-function closePopupByMousedown() {  // закрытие попап кликом на крестик и оверлей
-const popups = document.querySelectorAll('.popup')
-
-popups.forEach((popup) => {
-    popup.addEventListener('mousedown', (evt) => {
-        if (evt.target.classList.contains('popup_opened')) {
-            closePopup(popup)
-        }
-        if (evt.target.classList.contains('popup__close-icon')) {
-          closePopup(popup)
-        }
-    })
-})
 }
 
 function closePopupByKey(e) { // закрытие попап нажатием на Esc
@@ -67,6 +51,16 @@ function closePopupByKey(e) { // закрытие попап нажатием н
   }
 }
 
+popups.forEach((popup) => {  // закрытие попап кликом на крестик и оверлей
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup)
+    }
+    if (evt.target.classList.contains('popup__close-icon')) {
+      closePopup(popup)
+    }
+  })
+})
 
 function addCard(item) {  // Добавление новой карточки
 
@@ -132,6 +126,7 @@ const handleFormAddSubmit = (e) => { // добавляем картинки и �
   popupBtn.classList.add('popup__btn_disabled');
   popupBtn.disabled = 'disabled';
 }
+
 
 popupOpenEditButton.addEventListener('click', function () { // открытие попап и редактирвание профиля
   openPopup(popupEdit);
