@@ -37,8 +37,10 @@ const checkInputValidity = (formElement, inputElement) => {
 const toggleButtonState = (inputList, buttonElement) => {
     if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(object.inactiveButtonClass);
+    buttonElement.disabled = 'disabled';
   } else {
     buttonElement.classList.remove(object.inactiveButtonClass);
+    buttonElement.disabled = '';
   }
 }
 
@@ -63,7 +65,7 @@ const hasInvalidInput = (inputList) => {
 }
 
 
-const enableValidation = () => {
+const enableValidation = (object) => {
   const formList = Array.from(document.querySelectorAll(object.formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', function (evt) {
