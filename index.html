@@ -26,56 +26,7 @@
       <button class="btn profile__add-btn" type="button" aria-label="добавить"></button>
     </section>
     <section class="photo-grid">
-      <!--
-      <article class="element">
-        <button class="btn element__delete-btn" type="button" aria-label="удалить"></button>
-        <img class="element__image" src="./images/baikal.png" alt="байкал">
-        <div class="element__image-description">
-          <h2 class="element__heading">Байкал</h2>
-          <button class="element__like-btn" type="button" aria-label="нравится"></button>
-        </div>
-      </article>
-      <article class="element">
-        <button class="btn element__delete-btn" type="button" aria-label="удалить"></button>
-        <img class="element__image" src="./images/karelia.jpeg" alt="пещеры рускеала">
-        <div class="element__image-description">
-          <h2 class="element__heading">Пещеры Рускеала, Карелия</h2>
-          <button class="element__like-btn" type="button" aria-label="нравится"></button>
-        </div>
-      </article>
-      <article class="element">
-        <button class="btn element__delete-btn" type="button" aria-label="удалить"></button>
-        <img class="element__image" src="./images/kamchatka.jpg" alt="вулкан ключесвкой">
-        <div class="element__image-description">
-          <h2 class="element__heading">Вулкан Ключевской, Камчатка</h2>
-          <button class="element__like-btn" type="button" aria-label="нравится"></button>
-        </div>
-      </article>
-      <article class="element">
-        <button class="btn element__delete-btn" type="button" aria-label="удалить"></button>
-        <img class="element__image" src="./images/prirodniy_park_egorki_krasn.jpeg" alt="красноярск">
-        <div class="element__image-description">
-          <h2 class="element__heading">Природный парк Егорки, Красноярск</h2>
-          <button class="element__like-btn" type="button" aria-label="нравится"></button>
-        </div>
-      </article>
-      <article class="element">
-        <button class="btn element__delete-btn" type="button" aria-label="удалить"></button>
-        <img class="element__image" src="./images/vulcan_kamchatka.jpeg" alt="вулкан малый семячик">
-        <div class="element__image-description">
-          <h2 class="element__heading">Вулкан Малый Семячик, Камчатка</h2>
-          <button class="element__like-btn" type="button" aria-label="нравится"></button>
-        </div>
-      </article>
-      <article class="element">
-        <button class="btn element__delete-btn" type="button" aria-label="удалить"></button>
-        <img class="element__image" src="./images/karelia_2.jpeg" alt="горный парк рускеала">
-        <div class="element__image-description">
-          <h2 class="element__heading">Горный парк Рускеала, Карелия</h2>
-          <button class="element__like-btn" type="button" aria-label="нравится"></button>
-        </div>
-      </article>
-    -->
+
     </section>
   </main>
   <footer class="footer">
@@ -86,7 +37,7 @@
     <div class="popup__container">
       <button class="btn popup__close-icon popup__close-icon_edit" type="button" aria-label="закрыть"></button>
       <h3 class="popup__heading">Редактировать профиль</h3>
-      <form class="popup__form form-edit" name="edit" novalidate>
+      <form class="popup__form form-edit" name="edit" id="edit" novalidate>
         <input class="popup__input popup__input_field_name" type="text" name="username" id="username" placeholder="Имя" minlength="2" maxlength="40" required>
         <span class="popup__error username-error"></span>
         <input class="popup__input popup__input_field_aboutme" type="text" name="aboutme" id="aboutme" placeholder="Вид деятельности" minlength="2" maxlength="200" required>
@@ -100,7 +51,7 @@
     <div class="popup__container">
       <button class="btn popup__close-icon popup__close-icon_add" type="button" aria-label="закрыть"></button>
       <h3 class="popup__heading">Новое место</h3>
-      <form class="popup__form form-add" name="add" novalidate>
+      <form class="popup__form form-add" name="add" id="add" novalidate>
         <input class="popup__input popup__input_field_place" type="text" name="place" id="place" placeholder="Название" minlength="2" maxlength="30" required>
         <span class="popup__error place-error"></span>
         <input class="popup__input popup__input_field_src" type="url" name="src" id="src" placeholder="Ссылка на картинку" required>
@@ -128,9 +79,10 @@
       </div>
     </article>
   </template>
-  <script src="./scripts/constants.js"></script>
-  <script src="./scripts/index.js"></script>
-  <script src="./scripts/validate.js"></script>
+
+  <script type="module" src="./scripts/index.js"></script>
+  <script type="module" src="./scripts/Card.js"></script>
+  <script type="module" src="./scripts/FormValidator.js"></script>
 
 </body>
 
