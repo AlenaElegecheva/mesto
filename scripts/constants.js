@@ -52,3 +52,4 @@ export const popupAdd = document.querySelector('.popup_add');
 export const formAdd = document.querySelector('.form-add');
 export const formEdit = document.querySelector('.form-edit');
 export const popupBtn = popupAdd.querySelector('.popup__btn');
+export const popupPicture = document.querySelector('.popup__picture');

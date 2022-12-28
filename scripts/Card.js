@@ -1,5 +1,5 @@
 import { openPopup } from "./index.js";
-import { popupImage } from "./constants.js";
+import { popupImage, popupPicture } from "./constants.js";
 
 export class Card {
   constructor(data, templateSelector) {
@@ -21,8 +21,9 @@ export class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListener();
-    this._element.querySelector('.element__image').src = this._image;
-    this._element.querySelector('.element__image').alt = this._title;
+    const elementImage = this._element.querySelector('.element__image');
+    elementImage.src = this._image;
+    elementImage.alt = this._title;
     this._element.querySelector('.element__heading').textContent = this._title;
 
     return this._element;
@@ -33,12 +34,12 @@ export class Card {
   }
 
   _handleDeleteButtonClick() {
-    this._element.querySelector('.element__delete-btn').closest('.element').remove()
+    this._element.remove()
   }
 
   _handleElementImageClick() {
-    document.querySelector('.popup__picture').src = this._image;
-    document.querySelector('.popup__picture').alt = this._title;
+    popupPicture.src = this._image;
+    popupPicture.alt = this._title;
     document.querySelector('.popup__image-title').textContent = this._title;
 
     openPopup(popupImage);

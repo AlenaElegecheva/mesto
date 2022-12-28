@@ -2,12 +2,15 @@ import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 import { initialCards, photoGrid, popupEdit, popupOpenEditButton, profileTitle, profileSubtitle, formEditElement, username, aboutme, popupOpenAddButton, formAddElement, popupPlace, popupSrc, popupAdd, settings, formAdd, formEdit, popupBtn } from "./constants.js"
 
-
-initialCards.forEach((item) => { //загрузка карточек на страницу
-  const card = new Card(item, '#element-template');
+function createNewCard(data) { // создаем новые карточки на основе класса
+  const card = new Card(data, '#element-template');
   const photoGridElement = card.generateCard();
 
-  photoGrid.append(photoGridElement);
+  return photoGridElement;
+}
+
+initialCards.forEach((item) => { //загрузка карточек на страницу
+  photoGrid.append(createNewCard(item));
 });
 
 export function openPopup(popup) { // открытие попап
@@ -44,11 +47,11 @@ function closePopupByKey(e) { // закрытие попап нажатием н
   }
 }
 
-const addFormValidator = new FormValidator(settings, formAdd); // создаем экземпляр класса FormValidator
-addFormValidator.enableValidation();
+const formAddValidator = new FormValidator(settings, formAdd); // создаем экземпляр класса FormValidator
+formAddValidator.enableValidation();
 
-const editFormValidator = new FormValidator(settings, formEdit); // создаем экземпляр класса FormValidator
-editFormValidator.enableValidation();
+const formEditValidator = new FormValidator(settings, formEdit); // создаем экземпляр класса FormValidator
+formEditValidator.enableValidation();
 
 
 function resetErrorSpan() { //сброс ошибки в спане при открытии попапа
@@ -66,12 +69,13 @@ function resetErrorInput() { // сброс ошибки в инпуте при �
 }
 
 popupOpenEditButton.addEventListener('click', function () { // открытие попап и редактирвание профиля
-  openPopup(popupEdit);
   username.value = profileTitle.textContent;
   aboutme.value = profileSubtitle.textContent;
 
   resetErrorSpan();
   resetErrorInput();
+
+  openPopup(popupEdit);
 });
 
 popupOpenAddButton.addEventListener('click', function () { // открытие попап добавления карточки
@@ -96,9 +100,7 @@ const handleFormAddSubmit = (e) => { // добавляем картинки и �
     link: popupSrc.value,
     name: popupPlace.value
   }
-  const card = new Card(newCardElements, '#element-template');
-  const photoGridElement = card.generateCard();
-  photoGrid.prepend(photoGridElement);
+  photoGrid.prepend(createNewCard(newCardElements));
 
   closePopup(popupAdd);
   popupBtn.classList.add('popup__btn_disabled');
