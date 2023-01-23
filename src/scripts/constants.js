@@ -35,7 +35,6 @@ export const settings = ({
 );
 
 export const photoGrid = document.querySelector('.photo-grid');
-export const popupEditElement = document.querySelector('.popup_edit');
 export const popupOpenEditButton = document.querySelector('.profile__edit-btn');
 export const profileTitle = document.querySelector('.profile__title');
 export const profileSubtitle = document.querySelector('.profile__subtitle');
@@ -44,10 +43,6 @@ export const username = formEditElement.elements.username;
 export const aboutme = formEditElement.elements.aboutme;
 export const popupOpenAddButton = document.querySelector('.profile__add-btn');
 export const formAddElement = document.forms.add;
-export const popupPlace = formAddElement.elements.place;
-export const popupSrc = formAddElement.elements.src;
-export const popupImage = document.querySelector('.popup_image');
-export const popupAddElement = document.querySelector('.popup_add');
 export const formAdd = document.querySelector('.form-add');
 export const formEdit = document.querySelector('.form-edit');
 export const popupPicture = document.querySelector('.popup__picture');

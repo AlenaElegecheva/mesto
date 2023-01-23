@@ -13,8 +13,8 @@ export default class UserInfo {
     return profileFormInfo;
   }
 
-  setUserInfo() {
-    this._userNameInfo.textContent = username.value;
-    this._aboutMeInfo.textContent = aboutme.value;
+  setUserInfo(object) {
+    this._userNameInfo.textContent = object.username;
+    this._aboutMeInfo.textContent = object.aboutme;
   }
 }

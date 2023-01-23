@@ -4,7 +4,7 @@ import Section from "../components/Section.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
-import { initialCards, photoGrid, popupOpenEditButton, profileTitle, profileSubtitle, username, aboutme, popupOpenAddButton, formAddElement, popupPlace, popupSrc, settings, formAdd, formEdit, popupImage, popupAddElement, popupEditElement } from "./constants.js";
+import { initialCards, photoGrid, popupOpenEditButton, profileTitle, profileSubtitle, username, aboutme, popupOpenAddButton, formAddElement, settings, formAdd, formEdit } from "./constants.js";
 import "../pages/index.css";
 
 const profileInfo = new UserInfo({ // создаем экземпляр новых данных пользователя
@@ -34,18 +34,14 @@ function createNewCard(data) { // создаем новые карточки н�
   return photoGridElement;
 }
 
-function handleCardClick(name, link) {
+function handleCardClick(name, link) { //открываем попап с картинкой
   popupImg.open(name, link);
 }
 
-function writeInInputsUserInfo() {
-  username.value = profileTitle.textContent;
-  aboutme.value = profileSubtitle.textContent;
-}
-
-
 popupOpenEditButton.addEventListener('click', function () { // открытие попап и редактирование профиля
-  profileInfo.getUserInfo(writeInInputsUserInfo());
+  const userData = profileInfo.getUserInfo();
+  username.value = userData.userNameInfo;
+  aboutme.value = userData.aboutMeInfo;
   formEditValidator.resetValidation();
 
   popupEdit.open();
@@ -58,14 +54,14 @@ popupOpenAddButton.addEventListener('click', function () { // открытие �
   formAddValidator.resetValidation();
 });
 
-function handleFormEditSubmit() { // обработка формы редактирования профиля
-  profileInfo.setUserInfo();
+function handleFormEditSubmit(object) { // обработка формы редактирования профиля
+  profileInfo.setUserInfo(object);
 }
 
-function handleFormAddSubmit() { // добавляем картинки и описание в форму попап
+function handleFormAddSubmit(inputValue) { // добавляем картинки и описание в форму попап
   const newCardElements = {
-    link: popupSrc.value,
-    name: popupPlace.value
+    link: inputValue['src'],
+    name: inputValue['place']
   }
   photoGrid.prepend(createNewCard(newCardElements));
 
@@ -74,12 +70,11 @@ function handleFormAddSubmit() { // добавляем картинки и оп�
   formAddValidator.resetValidation();
 }
 
-const popupEdit = new PopupWithForm(popupEditElement, handleFormEditSubmit); // создаем экземпляр попап редактирования
+const popupEdit = new PopupWithForm('.popup_edit', handleFormEditSubmit); // создаем экземпляр попап редактирования
 popupEdit.setEventListeners();
-const popupAdd = new PopupWithForm(popupAddElement, handleFormAddSubmit); // создаем экземпляр попап добавления картинки
+const popupAdd = new PopupWithForm('.popup_add', handleFormAddSubmit); // создаем экземпляр попап добавления картинки
 popupAdd.setEventListeners();
 
-
-const popupImg = new PopupWithImage(popupImage); // создаем экземпляр попап с картинкой
+const popupImg = new PopupWithImage('.popup_image'); // создаем экземпляр попап с картинкой
 popupImg.setEventListeners();
 
