@@ -45,7 +45,7 @@ export default class Card {
   }
 
 
-  deleteCard = () => {
+  deleteCard() {
     this._element.remove();
     this._element = null;
   }
@@ -87,7 +87,7 @@ export default class Card {
   putLike() {
     this._element.querySelector('.element__like-btn').classList.add('element__like-btn_active')
   }
-  
+
   deleteLike() {
     this._element.querySelector('.element__like-btn').classList.remove('element__like-btn_active')
   }

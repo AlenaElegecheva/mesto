@@ -24,7 +24,7 @@ Promise.all([api.getUsersData(), api.getInitialCards()])
     const dataCard = res[1]
     userId = dataUser._id;
     profileInfo.setUserInfo(dataUser)   // загрузка данных о пользователе
-    cardsList.renderItems(dataCard)     // загрузка карточек
+    cardsList.renderItems(dataCard.reverse())     // загрузка карточек
   })
   .catch((err) => {
     console.log(err);
@@ -40,23 +40,21 @@ function createNewCard(data) { // создаем новые карточки н�
       popupImg.open(data.name, data.link);
     },
     handleDeleteCardClick: () => {          // удаляем карточку
-      const popupDeleteCard = new PopupWithSubmit('.popup_delete-card', handleDeleteCardSubmit);
-      popupDeleteCard.setEventListeners();
       popupDeleteCard.open(); //открытие попап удаления карточки
-      function handleDeleteCardSubmit() {
+      popupDeleteCard.setSubmitAction(() => {
+        popupDeleteCard.setLoadText('Удаление...')
         api.deleteCards(data._id)
           .then(res => {
             card.deleteCard(res)
-            popupDeleteCard.close();
+            popupDeleteCard.close()
           })
-          .then(popupDeleteCard.setLoadText('Удаление...'))
           .catch((err) => {
-            console.log(err);
+            console.log(err)
           })
           .finally(() => {
             popupDeleteCard.setLoadText('Да')
           })
-      }
+      })
     },
     handleLikeButtonClick: () => {  // ставим лайки
       api.putLikeCards(data._id)
@@ -70,13 +68,13 @@ function createNewCard(data) { // создаем новые карточки н�
     },
     handleDeleteLike: () => {   // удаляем лайки
       api.deleteLikeCards(data._id)
-      .then(res => {
-        card.deleteLike(data._id)
-        card.likeCount(res)
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+        .then(res => {
+          card.deleteLike(data._id)
+          card.likeCount(res)
+        })
+        .catch((err) => {
+          console.log(err);
+        })
     }
   });
   const photoGridElement = card.generateCard();
@@ -122,6 +120,7 @@ function handleFormEditSubmit(data) { // обработка формы реда�
   api.setUsersData(data)
     .then(res => {
       profileInfo.setUserInfo(res);
+      popupEdit.close()
     })
     .catch((err) => {
       console.log(err);
@@ -136,8 +135,9 @@ function handleFormAddSubmit(data) { // добавляем картинки и �
   popupAdd.setLoadText('Сохранение...')
   api.createCard(data)
     .then(res => {
-      photoGrid.prepend(createNewCard(res));
-      popupAdd.close();
+      console.log(res)
+      cardsList.addItem(createNewCard(res));
+      popupAdd.close()
     })
     .catch((err) => {
       console.log(err);
@@ -153,8 +153,8 @@ function handleFormAvatarEditSubmit(data) {  // меняем изображен�
   popupAvatarEdit.setLoadText('Сохранение...')
   api.setAvatar(data)
     .then(res => {
-      profileInfo.setUserAvatar(res);
-      popupAvatarEdit.close();
+      profileInfo.setUserAvatar(res)
+      popupAvatarEdit.close()
     })
     .catch((err) => {
       console.log(err);
@@ -176,6 +176,9 @@ popupImg.setEventListeners();
 
 const popupAvatarEdit = new PopupWithForm('.popup_edit-avatar', handleFormAvatarEditSubmit);
 popupAvatarEdit.setEventListeners();
+
+const popupDeleteCard = new PopupWithSubmit('.popup_delete-card');
+popupDeleteCard.setEventListeners();
 
 
 const formAddValidator = new FormValidator(settings, formAdd); // создаем экземпляр класса FormValidator
